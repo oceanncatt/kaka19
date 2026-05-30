@@ -984,7 +984,7 @@
       </p>
 
       <div class="form-box">
-        <form action="https://formsubmit.co/19vouudakaka@gmail.com" method="POST">
+        <form id="confirmForm" action="https://formsubmit.co/19vouudakaka@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="Nova confirmação - 19 anos da KaKa">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
@@ -1078,6 +1078,36 @@
     <div class="footer">
       feito com carinho para os 19 anos da KaKa<br><span class="designer-credit">design by Davi</span>
     </div>
-  </main>
+    </main>
+
+  <audio id="musicaConfirmacao" src="musica-confirmacao.mp3" preload="auto"></audio>
+
+  <script>
+    const confirmForm = document.getElementById('confirmForm');
+    const musicaConfirmacao = document.getElementById('musicaConfirmacao');
+
+    confirmForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const botao = confirmForm.querySelector('.submit-btn');
+      botao.textContent = 'Presença confirmada 💖';
+      botao.disabled = true;
+
+      musicaConfirmacao.currentTime = 0;
+      musicaConfirmacao.volume = 0.75;
+
+      musicaConfirmacao.play()
+        .then(() => {
+          setTimeout(() => {
+            confirmForm.submit();
+          }, 3000);
+        })
+        .catch(() => {
+          setTimeout(() => {
+            confirmForm.submit();
+          }, 800);
+        });
+    });
+  </script>
 </body>
 </html>
