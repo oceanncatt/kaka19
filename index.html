@@ -96,7 +96,48 @@
 
     .floating-flower.f1 { top: 94px; right: 6px; transform: rotate(10deg); }
     .floating-flower.f2 { top: 880px; left: -12px; transform: rotate(-14deg); animation-delay: 1.4s; }
-    .floating-flower.f3 { bottom: 220px; right: -10px; transform: rotate(8deg); animation-delay: 2.8s; }
+    .floating-flower.f3 {
+      bottom: 220px;
+      right: -10px;
+      transform: rotate(8deg);
+      animation-delay: 2.8s;
+    }
+
+    .floating-flower.f4 {
+      top: 520px;
+      left: 10px;
+      width: 62px;
+      opacity: .55;
+      transform: rotate(22deg);
+      animation-delay: 1.8s;
+    }
+
+    .floating-flower.f5 {
+      top: 1180px;
+      right: 18px;
+      width: 66px;
+      opacity: .58;
+      transform: rotate(-18deg);
+      animation-delay: 3.2s;
+    }
+
+    .floating-flower.f6 {
+      top: 1540px;
+      left: -4px;
+      width: 70px;
+      opacity: .52;
+      transform: rotate(12deg);
+      animation-delay: 4.1s;
+    }
+
+    .floating-flower.f7 {
+      bottom: 560px;
+      right: 22px;
+      width: 58px;
+      opacity: .50;
+      transform: rotate(-8deg);
+      animation-delay: 5s;
+    }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
@@ -129,6 +170,60 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       animation: fadeUp .7s ease both;
+    }
+
+    .section-flower {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .18;
+      filter: blur(.2px) drop-shadow(0 10px 18px rgba(140,84,112,.12));
+    }
+
+    .section-flower-a {
+      width: 96px;
+      top: -18px;
+      right: -22px;
+      transform: rotate(18deg);
+    }
+
+    .section-flower-b {
+      width: 74px;
+      bottom: -18px;
+      left: -18px;
+      transform: rotate(-16deg);
+    }
+
+    .section-flower-c {
+      width: 100px;
+      top: 18px;
+      right: -25px;
+      transform: rotate(-12deg);
+      opacity: .22;
+    }
+
+    .section-flower-d {
+      width: 92px;
+      top: 12px;
+      right: -18px;
+      transform: rotate(15deg);
+      opacity: .16;
+    }
+
+    .section-flower-e {
+      width: 76px;
+      bottom: 130px;
+      left: -18px;
+      transform: rotate(-20deg);
+      opacity: .18;
+    }
+
+    .section-flower-f {
+      width: 94px;
+      top: -20px;
+      left: -20px;
+      transform: rotate(14deg);
+      opacity: .18;
     }
 
     .cover-section {
@@ -756,6 +851,10 @@
     <img src="flor-rosa.png" alt="" class="floating-flower f1">
     <img src="flor-rosa.png" alt="" class="floating-flower f2">
     <img src="flor-rosa.png" alt="" class="floating-flower f3">
+    <img src="flor-rosa.png" alt="" class="floating-flower f4">
+    <img src="flor-rosa.png" alt="" class="floating-flower f5">
+    <img src="flor-rosa.png" alt="" class="floating-flower f6">
+    <img src="flor-rosa.png" alt="" class="floating-flower f7">
   </div>
 
   <main class="page">
@@ -773,15 +872,17 @@
     </section>
 
     <section class="section intro">
+      <img src="flor-rosa.png" alt="" class="section-flower section-flower-a">
+      <img src="flor-rosa.png" alt="" class="section-flower section-flower-b">
       <span class="mini-tag">convite especial</span>
       <h1 class="title">Birthday <span>KaKa</span></h1>
       <p>
-        Uma noite delicada, rosa e inesquecível para comemorar os 19 anos da KaKa.
         Espero você para celebrar comigo com muito amor, comida boa e lembranças lindas. ✨
       </p>
     </section>
 
     <section class="section about" id="sobre">
+      <img src="flor-rosa.png" alt="" class="section-flower section-flower-c">
       <h2 class="section-title">Sobre</h2>
 
       <div class="about-note">
@@ -806,6 +907,8 @@
     </section>
 
     <section class="section details-section" id="detalhes">
+      <img src="flor-rosa.png" alt="" class="section-flower section-flower-d">
+      <img src="flor-rosa.png" alt="" class="section-flower section-flower-e">
       <h2 class="section-title">Detalhes</h2>
 
       <div class="details-grid">
@@ -872,6 +975,7 @@
     </section>
 
     <section class="section confirm" id="confirmar">
+      <img src="flor-rosa.png" alt="" class="section-flower section-flower-f">
       <h2 class="section-title">Confirmar</h2>
 
       <p class="confirm-intro">
