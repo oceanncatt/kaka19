@@ -442,10 +442,11 @@
       background: linear-gradient(180deg, #ffdaea 0%, #f6b6d4 100%);
       border: 1px solid rgba(255,255,255,.55);
       border-radius: 18px;
-      padding: 17px 14px 0;
+      padding: 18px 14px 26px;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-soft);
+      min-height: 240px;
     }
 
     .focus-box h4 {
@@ -461,45 +462,30 @@
       line-height: 1.75;
       max-width: 235px;
       color: var(--text);
-      margin-bottom: 14px;
+      margin-bottom: 30px;
     }
 
-    .focus-bag-wrap {
+    .rodizio-icons-area {
+      width: 100%;
       display: flex;
       justify-content: center;
-      align-items: end;
+      align-items: flex-end;
+      padding-top: 28px;
     }
 
-    .focus-bag {
-      width: 190px;
-      height: 150px;
-      background: linear-gradient(180deg, #ef95bb, #d96b98);
-      border-radius: 18px 18px 28px 28px;
-      position: relative;
-      box-shadow: inset 0 8px 16px rgba(255,255,255,.18);
-    }
-
-    .focus-bag::before {
-      content: "";
-      position: absolute;
-      width: 90px;
-      height: 42px;
-      border: 8px solid #db7aa2;
-      border-bottom: none;
-      border-radius: 50px 50px 0 0;
-      top: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .food-icons {
-      position: absolute;
-      left: 50%;
-      top: -24px;
-      transform: translateX(-50%);
+    .rodizio-icons {
       display: flex;
-      gap: 10px;
-      font-size: 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .rodizio-icons span {
+      font-size: 40px;
+      line-height: 1;
+      display: inline-block;
+      filter: drop-shadow(0 8px 12px rgba(185, 87, 126, 0.18));
     }
 
     .confirm {
@@ -872,16 +858,14 @@
         <h4>Rodízio incrível</h4>
         <p>
           Prepare-se para uma noite deliciosa com variedade, diversão e muito amor
-          nessa comemoração especial. 🥩🍣🍕
+          nessa comemoração especial.
         </p>
 
-        <div class="focus-bag-wrap">
-          <div class="focus-bag">
-            <div class="food-icons">
-              <span>🍣</span>
-              <span>🍕</span>
-              <span>🥩</span>
-            </div>
+        <div class="rodizio-icons-area">
+          <div class="rodizio-icons">
+            <span>🍣</span>
+            <span>🍕</span>
+            <span>🥩</span>
           </div>
         </div>
       </div>
@@ -993,4 +977,3 @@
   </main>
 </body>
 </html>
-
