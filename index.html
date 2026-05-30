@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday KaKa | Confirmação de Presença</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --pink-1: #fff7fb;
+      --pink-2: #ffe8f2;
+      --pink-3: #ffd1e5;
+      --pink-4: #f8afd0;
+      --pink-5: #ef8fba;
+      --pink-6: #dc6d9b;
+      --pink-7: #a94e79;
+      --pink-8: #6e304f;
+      --cream: #fffaf5;
+      --text: #6d445d;
+      --text-dark: #442437;
+      --glass: rgba(255, 248, 252, 0.58);
+      --glass-strong: rgba(255, 250, 253, 0.78);
+      --glass-soft: rgba(255, 238, 247, 0.48);
+      --border: rgba(255, 255, 255, 0.62);
+      --shadow: 0 24px 60px rgba(165, 68, 115, 0.18);
+      --shadow-soft: 0 14px 32px rgba(165, 68, 115, 0.12);
+      --glow: 0 0 10px rgba(255,255,255,.65), 0 0 22px rgba(248,175,208,.48), 0 0 36px rgba(220,109,155,.25);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 243, 180, 0.22), transparent 18%),
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,0.72), transparent 25%),
+        radial-gradient(circle at 90% 10%, rgba(255, 205, 228, 0.55), transparent 28%),
+        radial-gradient(circle at 15% 94%, rgba(255, 191, 220, 0.34), transparent 30%),
+        linear-gradient(180deg, #fff6fb 0%, #ffe0ee 36%, #ffc9df 72%, #f7aaca 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .26;
+      background-image:
+        linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(16px);
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .orb.one { width: 190px; height: 190px; top: 44px; left: -72px; background: rgba(255,255,255,.34); }
+    .orb.two { width: 230px; height: 230px; top: 370px; right: -100px; background: rgba(255,191,220,.30); animation-delay: 2s; }
+    .orb.three { width: 140px; height: 140px; bottom: 120px; left: 30px; background: rgba(255,255,255,.24); animation-delay: 4s; }
+
+    .floating-flower {
+      position: absolute;
+      width: 78px;
+      opacity: .78;
+      filter: drop-shadow(0 14px 20px rgba(116, 53, 83, .12));
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .floating-flower.f1 { top: 94px; right: 6px; transform: rotate(10deg); }
+    .floating-flower.f2 { top: 880px; left: -12px; transform: rotate(-14deg); animation-delay: 1.4s; }
+    .floating-flower.f3 { bottom: 220px; right: -10px; transform: rotate(8deg); animation-delay: 2.8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes softPulse {
+      0%, 100% { box-shadow: 0 20px 42px rgba(220,109,155,.22); }
+      50% { box-shadow: 0 26px 60px rgba(220,109,155,.34); }
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 0 12px 38px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section {
+      position: relative;
+      margin-bottom: 18px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      animation: fadeUp .7s ease both;
+    }
+
+    .cover-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 0 18px;
+    }
+
+    .cover-frame {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .cover-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255,255,255,.32), transparent 34%, rgba(255,255,255,.12));
+    }
+
+    .cover-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    .cover-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 15px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .22s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-main {
+      color: white;
+      background: linear-gradient(135deg, #f6a7c8, #dc6d9b);
+      animation: softPulse 2.7s ease-in-out infinite;
+    }
+
+    .btn-soft {
+      color: var(--text-dark);
+      background: var(--glass-strong);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .tiny-line {
+      text-align: center;
+      color: rgba(109, 68, 93, .72);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .intro {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding: 24px 18px 22px;
+      text-align: center;
+    }
+
+    .mini-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 11px;
+      border-radius: 999px;
+      color: var(--pink-7);
+      background: rgba(255,255,255,.58);
+      border: 1px solid rgba(255,255,255,.72);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 58px;
+      line-height: .9;
+      font-weight: 600;
+      letter-spacing: -.7px;
+      color: var(--pink-8);
+      text-shadow: var(--glow);
+    }
+
+    .title span {
+      display: block;
+      font-family: "Great Vibes", cursive;
+      color: var(--pink-6);
+      font-size: 1.16em;
+      font-weight: 400;
+      margin-top: 2px;
+      text-shadow: var(--glow);
+    }
+
+    .intro p {
+      margin-top: 15px;
+      font-size: 13px;
+      line-height: 1.82;
+      color: var(--text);
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 44px;
+      font-weight: 600;
+      color: white;
+      text-align: center;
+      line-height: .95;
+      margin-bottom: 16px;
+      text-shadow: var(--glow);
+    }
+
+    .about {
+      background: linear-gradient(180deg, rgba(255,211,230,.86), rgba(247,174,207,.84));
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 22px 16px 18px;
+    }
+
+    .about-note {
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.78);
+      border-radius: 14px;
+      padding: 15px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-soft);
+      transform: rotate(-1deg);
+    }
+
+    .about-note p {
+      font-size: 13px;
+      line-height: 1.82;
+      color: var(--text);
+    }
+
+    .about-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .child-gallery {
+      align-items: center;
+    }
+
+    .child-polaroid.left {
+      transform: rotate(-3deg);
+    }
+
+    .child-polaroid.right {
+      transform: rotate(3deg);
+      margin-top: 18px;
+    }
+
+    .polaroid {
+      background: rgba(255,255,255,.88);
+      padding: 8px 8px 14px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .polaroid img, .about-highlight img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .polaroid span {
+      display: block;
+      margin-top: 7px;
+      text-align: center;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .about-highlight {
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.27);
+      border: 1px solid rgba(255,255,255,.38);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .about-stickers {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 20px;
+    }
+
+    .details-section {
+      background: var(--glass-strong);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding: 20px 14px;
+    }
+
+    .details-section .section-title {
+      color: var(--pink-7);
+      text-align: left;
+      font-size: 52px;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .detail-card {
+      background: rgba(255, 247, 251, .86);
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 14px;
+      padding: 12px 10px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .detail-top {
+      min-height: 72px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #ffe2ef, #ffcce2);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .detail-card h3 {
+      color: var(--text-dark);
+      font-size: 12px;
+      line-height: 1.35;
+      margin-bottom: 5px;
+      min-height: 32px;
+    }
+
+    .detail-card p {
+      font-size: 10px;
+      line-height: 1.5;
+      color: #7d6673;
+      margin-bottom: 10px;
+    }
+
+    .detail-price {
+      color: var(--text-dark);
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .detail-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .small-btn {
+      flex: 1;
+      text-decoration: none;
+      text-align: center;
+      padding: 9px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .small-btn.pink { background: var(--pink-3); color: var(--pink-7); }
+    .small-btn.rose { background: var(--pink-6); color: white; max-width: 42px; }
+
+    .focus-box {
+      margin-top: 16px;
+      background: linear-gradient(180deg, #ffdaea 0%, #f6b6d4 100%);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 18px;
+      padding: 17px 14px 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .focus-box h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      color: var(--pink-7);
+      margin-bottom: 4px;
+      text-shadow: var(--glow);
+    }
+
+    .focus-box p {
+      font-size: 12px;
+      line-height: 1.75;
+      max-width: 235px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .focus-bag-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+    }
+
+    .focus-bag {
+      width: 190px;
+      height: 150px;
+      background: linear-gradient(180deg, #ef95bb, #d96b98);
+      border-radius: 18px 18px 28px 28px;
+      position: relative;
+      box-shadow: inset 0 8px 16px rgba(255,255,255,.18);
+    }
+
+    .focus-bag::before {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 42px;
+      border: 8px solid #db7aa2;
+      border-bottom: none;
+      border-radius: 50px 50px 0 0;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .food-icons {
+      position: absolute;
+      left: 50%;
+      top: -24px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      font-size: 32px;
+    }
+
+    .confirm {
+      background: linear-gradient(180deg, rgba(249,184,210,.90), rgba(239,149,187,.90));
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 22px 16px;
+    }
+
+    .confirm-intro {
+      max-width: 320px;
+      margin: 0 auto 16px;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .form-box {
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.82);
+      border-radius: 15px;
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    label {
+      color: var(--pink-7);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 900;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(220,111,156,.18);
+      background: #fff7fb;
+      border-radius: 12px;
+      padding: 14px 13px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-dark);
+      outline: none;
+      transition: .2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(220,111,156,.55);
+      box-shadow: 0 0 0 4px rgba(220,111,156,.10);
+    }
+
+    textarea { min-height: 95px; resize: vertical; }
+
+    .radios {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .radio input { display: none; }
+
+    .radio span {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 12px;
+      background: #fff6fb;
+      border: 1px solid rgba(220,111,156,.18);
+      color: var(--text-dark);
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .radio input:checked + span {
+      color: white;
+      background: linear-gradient(135deg, #f3a8c7, #d96b98);
+      border-color: transparent;
+      box-shadow: 0 10px 22px rgba(166,69,102,.18);
+    }
+
+    .submit-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 15px;
+      color: white;
+      background: linear-gradient(135deg, #f3a8c7, #d96b98);
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 12px 22px rgba(166,69,102,.18);
+    }
+
+    .email-note {
+      text-align: center;
+      font-size: 10px;
+      color: #8a6c79;
+      line-height: 1.6;
+    }
+
+    .memory {
+      background: var(--glass-strong);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 18px 16px;
+    }
+
+    .memory-wrap {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .memory-title-full {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .child-gallery-final {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .child-photo-card {
+      width: 100%;
+      min-height: 170px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      border-radius: 16px;
+      background: rgba(255,255,255,.44);
+      border: 1px solid rgba(255,255,255,.68);
+      box-shadow: var(--shadow-soft);
+      padding: 8px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .child-photo-card img {
+      width: 100%;
+      max-width: 145px;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 18px rgba(140,84,112,.18));
+      border-radius: 14px;
+    }
+
+    .rotate-left {
+      transform: rotate(-3deg);
+    }
+
+    .rotate-right {
+      transform: rotate(3deg);
+      margin-top: 14px;
+    }
+
+    .center-signature {
+      text-align: center;
+    }
+
+    .child-photo {
+      min-height: 160px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .child-photo img {
+      width: 135px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 18px rgba(140,84,112,.18));
+    }
+
+    .two-child-memory .child-photo img {
+      width: 105px;
+      border-radius: 18px;
+    }
+
+    .child-photo-one {
+      transform: rotate(-4deg);
+    }
+
+    .child-photo-two {
+      transform: rotate(4deg);
+    }
+
+    .memory-text h3 {
+      font-family: "Great Vibes", cursive;
+      color: var(--pink-7);
+      font-size: 38px;
+      line-height: 1;
+      margin-bottom: 8px;
+      text-shadow: var(--glow);
+    }
+
+    .memory-text p {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .signature {
+      margin-top: 9px;
+      font-family: "Great Vibes", cursive;
+      font-size: 34px;
+      color: var(--pink-6);
+      text-shadow: var(--glow);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(90,74,82,.72);
+      margin-top: 14px;
+      padding-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .designer-credit {
+      display: inline-block;
+      margin-top: 2px;
+      font-size: 8px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(90,74,82,.46);
+    }
+
+    @media (max-width: 370px) {
+      .title { font-size: 52px; }
+      .section-title { font-size: 38px; }
+      .details-section .section-title { font-size: 46px; }
+      .memory-wrap { grid-template-columns: 1fr; text-align: center; }
+      .two-child-memory { grid-template-columns: 1fr 1fr; }
+      .two-child-memory .memory-text { grid-column: 1 / -1; order: -1; }
+      .child-photo img { width: 150px; }
+      .two-child-memory .child-photo img { width: 135px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+    <img src="flor-rosa.png" alt="" class="floating-flower f1">
+    <img src="flor-rosa.png" alt="" class="floating-flower f2">
+    <img src="flor-rosa.png" alt="" class="floating-flower f3">
+  </div>
+
+  <main class="page">
+    <section class="cover-section" id="inicio">
+      <div class="cover-frame">
+        <img src="capa-kaka.png" alt="Birthday KaKa">
+      </div>
+
+      <div class="cover-actions">
+        <a href="#confirmar" class="btn btn-main">Confirmar presença</a>
+        <a href="#detalhes" class="btn btn-soft">Ver detalhes do rodízio</a>
+      </div>
+
+      <div class="tiny-line">birthday kaka • 13/06 • 19h</div>
+    </section>
+
+    <section class="section intro">
+      <span class="mini-tag">convite especial</span>
+      <h1 class="title">Birthday <span>KaKa</span></h1>
+      <p>
+        Uma noite delicada, rosa e inesquecível para comemorar os 19 anos da KaKa.
+        Espero você para celebrar comigo com muito amor, comida boa e lembranças lindas. ✨
+      </p>
+    </section>
+
+    <section class="section about" id="sobre">
+      <h2 class="section-title">Sobre</h2>
+
+      <div class="about-note">
+        <p>
+          KaKa está comemorando seus <strong>19 anos</strong> e quer muito sua presença
+          nesse dia especial. Será uma noite cheia de carinho, boa comida, risadas
+          e memórias lindas com pessoas importantes. 💕
+        </p>
+      </div>
+
+      <div class="about-gallery child-gallery">
+        <div class="polaroid child-polaroid left">
+          <img src="foto-crianca-1.png" alt="KaKa criança sorrindo">
+          <span>mini kaka 01</span>
+        </div>
+
+        <div class="polaroid child-polaroid right">
+          <img src="foto-crianca-2.png" alt="KaKa criança sorrindo versão 2">
+          <span>mini kaka 02</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section details-section" id="detalhes">
+      <h2 class="section-title">Detalhes</h2>
+
+      <div class="details-grid">
+        <div class="detail-card">
+          <div class="detail-top">📅</div>
+          <h3>Data do aniversário</h3>
+          <p>Um encontro especial para celebrar essa nova fase.</p>
+          <div class="detail-price">13 de junho</div>
+          <div class="detail-actions">
+            <a href="#confirmar" class="small-btn pink">Detalhes</a>
+            <a href="#confirmar" class="small-btn rose">✓</a>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-top">🕖</div>
+          <h3>Horário</h3>
+          <p>Chegue no horário para aproveitar tudo desde o início.</p>
+          <div class="detail-price">19:00</div>
+          <div class="detail-actions">
+            <a href="#confirmar" class="small-btn pink">Detalhes</a>
+            <a href="#confirmar" class="small-btn rose">✓</a>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-top">📍</div>
+          <h3>Local</h3>
+          <p>Vamos comemorar no restaurante escolhido para essa noite.</p>
+          <div class="detail-price">Boi na Brasa BH</div>
+          <div class="detail-actions">
+            <a href="#confirmar" class="small-btn pink">Detalhes</a>
+            <a href="#confirmar" class="small-btn rose">✓</a>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-top">🍽️</div>
+          <h3>Rodízio</h3>
+          <p>Massas, sushi, pizzas, sobremesas e 19 cortes de carnes.</p>
+          <div class="detail-price">R$109,90</div>
+          <div class="detail-actions">
+            <a href="#confirmar" class="small-btn pink">Detalhes</a>
+            <a href="#confirmar" class="small-btn rose">✓</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="focus-box">
+        <h4>Rodízio incrível</h4>
+        <p>
+          Prepare-se para uma noite deliciosa com variedade, diversão e muito amor
+          nessa comemoração especial. 🥩🍣🍕
+        </p>
+
+        <div class="focus-bag-wrap">
+          <div class="focus-bag">
+            <div class="food-icons">
+              <span>🍣</span>
+              <span>🍕</span>
+              <span>🥩</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section confirm" id="confirmar">
+      <h2 class="section-title">Confirmar</h2>
+
+      <p class="confirm-intro">
+        As confirmações e mensagens chegam direto no Gmail:
+        <strong>19vouudakaka@gmail.com</strong>
+      </p>
+
+      <div class="form-box">
+        <form action="https://formsubmit.co/19vouudakaka@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nova confirmação - 19 anos da KaKa">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://formsubmit.co/thanks">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="field">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="Nome" placeholder="Digite seu nome" required>
+          </div>
+
+          <div class="field">
+            <label for="telefone">Seu telefone</label>
+            <input type="tel" id="telefone" name="Telefone" placeholder="(00) 00000-0000">
+          </div>
+
+          <div class="field">
+            <label>Você vai?</label>
+            <div class="radios">
+              <label class="radio">
+                <input type="radio" name="Presença" value="Sim, eu vou 💖" required>
+                <span>Sim 💖</span>
+              </label>
+
+              <label class="radio">
+                <input type="radio" name="Presença" value="Não vou 😢" required>
+                <span>Não 😢</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="quantidade">Quantidade de pessoas</label>
+            <select id="quantidade" name="Quantidade de pessoas" required>
+              <option value="">Selecione</option>
+              <option value="1 pessoa">1 pessoa</option>
+              <option value="2 pessoas">2 pessoas</option>
+              <option value="3 pessoas">3 pessoas</option>
+              <option value="4 pessoas">4 pessoas</option>
+              <option value="5 ou mais pessoas">5 ou mais pessoas</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="pagamento">Forma de pagamento</label>
+            <select id="pagamento" name="Forma de pagamento">
+              <option value="">Selecione</option>
+              <option value="Pix">Pix</option>
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão">Cartão</option>
+              <option value="Não sei ainda">Não sei ainda</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="mensagem">Mensagem para a KaKa</label>
+            <textarea id="mensagem" name="Mensagem para a KaKa" placeholder="Escreva uma mensagem opcional 💕"></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit">Enviar confirmação</button>
+
+          <p class="email-note">
+            Na primeira vez, o FormSubmit pode mandar um e-mail de ativação para esse Gmail.
+            É só abrir e confirmar para começar a receber tudo.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section memory">
+      <div class="memory-text memory-title-full">
+        <h3>Memórias lindas!</h3>
+        <p>
+          Algumas fotinhas especiais para lembrar essa fase doce e celebrar esse novo ciclo com muito carinho. ✨
+        </p>
+      </div>
+
+      <div class="child-gallery-final">
+        <div class="child-photo-card rotate-left">
+          <img src="foto-crianca-1.png" alt="Foto da KaKa criança 1">
+        </div>
+
+        <div class="child-photo-card rotate-right">
+          <img src="foto-crianca-2.png" alt="Foto da KaKa criança 2">
+        </div>
+      </div>
+
+      <div class="signature center-signature">KaKa</div>
+    </section>
+
+    <div class="footer">
+      feito com carinho para os 19 anos da KaKa<br><span class="designer-credit">design by Davi</span>
+    </div>
+  </main>
+</body>
+</html>
+
